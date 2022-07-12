@@ -71,10 +71,7 @@ public class JCServer {
                   outBytes = simulator.executeApdu(Arrays.copyOfRange(inBytes, 0, index + readLen));
                   outData = simulator.decodeDataOut();
                   System.out.println("Return Data = " + Utils.byteArrayToHexString(outData));
-                  byte[] finalOutData = new byte[outData.length + outBytes.length];
-                  System.arraycopy(outData, 0, finalOutData, 0, outData.length);
-                  System.arraycopy(outBytes, 0, finalOutData, outData.length, outBytes.length);
-                  output.write(finalOutData);
+                  output.write(outData);
                   output.flush();
                   index = 0;
                 } catch (IllegalArgumentException e) {

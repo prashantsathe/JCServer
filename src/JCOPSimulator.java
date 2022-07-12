@@ -23,7 +23,7 @@ public class JCOPSimulator implements Simulator {
       try {
         openCardSim.connect();
         // openCardSim.deleteApplet(keymasterAppletPackage);
-        openCardSim.installApplet(capFilePath, keymasterAppletId, keymasterAppletPackage);
+        //openCardSim.installApplet(capFilePath, keymasterAppletId, keymasterAppletPackage);
       } catch (JCOPException e) {
         openCardSim.close();
         throw new JCOPException(e.getMessage());

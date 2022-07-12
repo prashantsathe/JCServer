@@ -349,7 +349,7 @@ public class JCOPOpenCard {
         System.out.println("Failed to select applet. error:" + respApdu.sw());
         throw new JCOPException("Failed to select applet. error:" + respApdu.sw());
       }
-      System.out.println("Keymaster Applet selected successfully.");
+      System.out.println("Weaver Applet selected successfully.");
     } catch (CardTerminalException e) {
       throw new JCOPException(e.getMessage());
     }
@@ -393,16 +393,6 @@ public class JCOPOpenCard {
       // Delete any previous instance of applet.
       // deleteApplet();
       isConnected = true;
-
-      // TODO -----test
-      // deleteApplet("KeymasterApplet".getBytes());
-      // installApplet("C:\\Users\\venkat\\JCServer\\keymaster.cap",
-      // Utils.hexStringToByteArray("A00000006203020C0102"),
-      // Utils.hexStringToByteArray("A00000006203020C0101"));
-      // installApplet("C:\\Users\\venkat\\jcop-workspace\\JCOPTestApplet\\bin-release\\com\\example\\jcop\\test\\javacard\\test.cap",
-      // Utils.hexStringToByteArray("4A434F50546573744170706C657449"),
-      // Utils.hexStringToByteArray("4A434F50546573744170706C6574"));
-      // TODO -----test
 
       return true;
 
