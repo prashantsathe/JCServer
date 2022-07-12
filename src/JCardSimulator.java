@@ -15,7 +15,6 @@ import com.android.javacard.keymaster.KMInteger;
 import com.android.javacard.keymaster.KMJCardSimApplet;
 import com.android.javacard.keymaster.KMKeyParameters;
 import com.android.javacard.keymaster.KMKeymasterApplet;
-import com.android.javacard.keymaster.KMSEProvider;
 import com.android.javacard.keymaster.KMType;
 import com.licel.jcardsim.bouncycastle.util.Arrays;
 import com.licel.jcardsim.smartcardio.CardSimulator;
@@ -23,6 +22,7 @@ import com.licel.jcardsim.utils.AIDUtil;
 
 import javacard.framework.AID;
 import javacard.framework.Util;
+import javacard.framework.Applet;
 
 public class JCardSimulator implements Simulator {
 
