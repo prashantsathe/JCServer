@@ -3,12 +3,17 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/apduio-RELEASE71.jar"/>
-	<classpathentry kind="lib" path="lib/bcprov-ext-jdk15on.jar"/>
-	<classpathentry kind="lib" path="lib/bcprov-jdk15on.jar"/>
-	<classpathentry kind="lib" path="lib/jcardsim-3.0.5-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="lib/ocf_lib.jar"/>
 	<classpathentry kind="lib" path="lib/ocf.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-api-1.7.29.jar"/>
 	<classpathentry kind="lib" path="ExtBinaries/KeymasterApplets.jar"/>
+	<classpathentry kind="lib" path="lib/asm-9.4.jar"/>
+	<classpathentry kind="lib" path="lib/asm-commons-9.4-20221001.155809-20.jar"/>
+	<classpathentry kind="lib" path="lib/asm-tree-9.4-20221001.155809-20.jar"/>
+	<classpathentry kind="lib" path="lib/kryo-5.3.0.jar"/>
+	<classpathentry kind="lib" path="lib/objenesis-3.3.jar"/>
+	<classpathentry kind="lib" path="lib/bcprov-ext-jdk18on-172.jar"/>
+	<classpathentry kind="lib" path="lib/bcprov-jdk18on-172.jar"/>
+	<classpathentry kind="lib" path="lib/jcardsim-3.0.5-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

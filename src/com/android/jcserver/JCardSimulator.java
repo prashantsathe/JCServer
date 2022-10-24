@@ -4,11 +4,10 @@ import javax.smartcardio.CommandAPDU;
 import javax.smartcardio.ResponseAPDU;
 
 import com.android.javacard.keymaster.KMJCardSimApplet;
-
 import com.licel.jcardsim.smartcardio.CardSimulator;
 import com.licel.jcardsim.utils.AIDUtil;
 import static com.android.jcserver.config.*;
-import javacard.framework.AID;
+import javacard.framework.*;
 
 public class JCardSimulator implements Simulator {
 
