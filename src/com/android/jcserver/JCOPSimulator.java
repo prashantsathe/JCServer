@@ -101,7 +101,6 @@ public class JCOPSimulator implements Simulator {
 
     @Override
     public byte[] decodeDataOut() {
-        // TODO Auto-generated method stub
         return response.getBytes();
     }
 

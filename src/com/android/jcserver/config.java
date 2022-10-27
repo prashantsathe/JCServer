@@ -6,8 +6,12 @@ public class config {
 
     public static final String JCOP_PROVIDER = "jcop";
     public static final String JCARDSIM_PROVIDER = "jcardsim";
+    public static final int MAX_LOGICAL_CHANNEL = 4;
     public static final int PORT = 8080;
     public static final int JCOP_PORT = 8050;
+
+    public static final byte INS_SELECT = (byte) 0xA4;
+    public static final byte INS_MANAGE_CHANNEL = (byte) 0x70;
 
     // keymaster
     public static final String keymasterAid = "A00000006203020C010101";

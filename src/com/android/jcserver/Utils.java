@@ -25,4 +25,14 @@ public class Utils {
         }
         return new String(hexChars);
     }
+
+    public static String byteArrayToHexString(byte[] bytes, short offset, short len) {
+        char[] hexChars = new char[len * 2];
+        for (int j = 0; j < len; j++) {
+            int v = bytes[offset + j] & 0xFF;
+            hexChars[j * 2] = HEX_ARRAY[v >>> 4];
+            hexChars[j * 2 + 1] = HEX_ARRAY[v & 0x0F];
+        }
+        return new String(hexChars);
+    }
 }
