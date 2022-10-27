@@ -112,6 +112,36 @@ public class JCardSimulator implements Simulator {
         return new ResponseAPDU(new byte[] {(byte) ch, (byte) 0x90, 0x00});
     }
 
+    /*
+     * Jcard Simulator design is based on one applet and one channel at a time
+     * 
+     * In order to communicate multiple applets simultaneously on different channels
+     * We have added Logical channels implementation here. which has following variables 
+     *  - Vector[AID] (index 0 represent channel 0... so on)
+     *  - CurrentChannelnumber
+     * Generalized flow between SE hal and SE applet via JCserver is as follow
+     * 
+     *    SE HAl                     JCServer                                     JcardSim
+     *  ------------------------------------------------------------------------------------------
+     *  Managechannel ->         check if any channel is 
+     *                           free, if yes set occupied
+     *                           and return channel number.
+     *                           Else Error
+     *
+     *  Select Cmd    ->         select Command                              -->    select cmd
+     *
+     *                           if success copy AID to
+     *                           respective arrary and set
+     *                           CurrentChannelnumber = CH(CLA)
+     *
+     *
+     *  Non-Select Cmd ->      if (CH(CLA) == CurrentChannelnumber)
+     *                             send "Non-Select" cmd                    --> "Non-Select" cmd
+     *                         else 
+     *                             send "select(AID(CH(CLA))"               -->  select cmd
+     *                                  "CurrentChannelnumber = CH(CLA)"
+     *                             send "Non-Select" cmd                    --> "Non-Select" cmd
+     */
     @Override
     public byte[] executeApdu(byte[] apdu) throws Exception {
 
