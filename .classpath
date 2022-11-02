@@ -6,9 +6,8 @@
 	<classpathentry kind="lib" path="lib/bcprov-ext-jdk15on.jar"/>
 	<classpathentry kind="lib" path="lib/bcprov-jdk15on.jar"/>
 	<classpathentry kind="lib" path="lib/jcardsim-3.0.5-SNAPSHOT.jar"/>
-	<classpathentry kind="lib" path="lib/ocf_lib.jar"/>
+	<classpathentry kind="lib" path="ExtBinaries/KeymasterApplets.jar"/>
 	<classpathentry kind="lib" path="lib/ocf.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-api-1.7.29.jar"/>
-	<classpathentry kind="lib" path="ExtBinaries/KeymasterApplets.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
