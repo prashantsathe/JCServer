@@ -26,7 +26,8 @@ public class JCardSimulator implements Simulator {
     public JCardSimulator() {
         // Creating an empty Vector 
         channelAid = new Vector<String>(MAX_LOGICAL_CHANNEL);
-        for (int ch = 1; ch <= MAX_LOGICAL_CHANNEL; ch++) {
+        channelAid.add("ZeroChannelOccupied");
+        for (int ch = 1; ch < MAX_LOGICAL_CHANNEL; ch++) {
             channelAid.add(null);
         }
         currentChannel = -1;
@@ -99,7 +100,7 @@ public class JCardSimulator implements Simulator {
             return new ResponseAPDU(new byte[] {(byte) 0x90, 0x00});
         }
 
-        for (ch = 0; ch < maxCH; ch++) {
+        for (ch = 1; ch < maxCH; ch++) {
             if (channelAid.get(ch) == null)
                 break;
         }
@@ -121,7 +122,7 @@ public class JCardSimulator implements Simulator {
      *  - CurrentChannelnumber
      * Generalized flow between SE hal and SE applet via JCserver is as follow
      * 
-     *    SE HAl                     JCServer                                     JcardSim
+     *    SE HAL                     JCServer                                     JcardSim
      *  ------------------------------------------------------------------------------------------
      *  Managechannel ->         check if any channel is 
      *                           free, if yes set occupied
@@ -131,7 +132,7 @@ public class JCardSimulator implements Simulator {
      *  Select Cmd    ->         select Command                              -->    select cmd
      *
      *                           if success copy AID to
-     *                           respective arrary and set
+     *                           respective array and set
      *                           CurrentChannelnumber = CH(CLA)
      *
      *
@@ -157,7 +158,7 @@ public class JCardSimulator implements Simulator {
             if (ch == currentChannel || (byte) apduCmd.getINS() == INS_SELECT) {
                 response = simulator.transmitCommand(apduCmd);
                 // save AIDs if command is select
-                if (apduCmd.getINS() == INS_SELECT && response.getSW() == 0x9000) {
+                if ((byte) apduCmd.getINS() == INS_SELECT && response.getSW() == (int) 0x9000) {
                     channelAid.set(ch, byteArrayToHexString(apdu, ISO7816.OFFSET_CDATA,
                             apdu[ISO7816.OFFSET_LC]));
                     currentChannel = ch;
