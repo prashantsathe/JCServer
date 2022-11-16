@@ -36,10 +36,11 @@ public class JCServer {
         }
         targetNames = targetName.split(",");
         for (String name : targetNames) {
-            if (!(name.equals("fira") || name.equals("keymaster") || name.equals("weaver"))) {
-                System.out.println("Target name must be either 'fira' or 'keymaster' or 'Weaver");
+            if (!(name.equals("fira") || name.equals("keymaster") || name.equals("weaver") ||
+                    name.equals("ic"))) {
+                System.out.println("Target name must be either 'fira' or 'keymaster' or 'Weaver or ic");
                 return;
-                }
+            }
         }
 
         if (JCOP_PROVIDER.equals(providerName)) {

@@ -29,53 +29,68 @@ public class JCOPSimulator implements Simulator {
     }
 
     private void installKeymaster(String capPath) throws JCOPException {
-        openCardSim.installApplet(getAbsolutePath(capPath+"/"+CAP_SEPRIVIDER), null,
+        openCardSim.installApplet(getAbsolutePath(capPath + "/" + CAP_SEPRIVIDER), null,
                 SEPROVIDER_PKG_AID);
-        openCardSim.installApplet(getAbsolutePath(capPath+"/"+CAP_KEYMASTER), KEYMASTER_AID,
+        openCardSim.installApplet(getAbsolutePath(capPath + "/" + CAP_KEYMASTER), KEYMASTER_AID,
                 KEYMASTER_PKG_AID);
     }
     
     private void installWeaver(String capPath) throws JCOPException {
-    	openCardSim.installApplet(getAbsolutePath(capPath+"/"+CAP_WEAVER), WEAVER_AID,
+        openCardSim.installApplet(getAbsolutePath(capPath + "/" + CAP_WEAVER), WEAVER_AID,
                 WEAVER_PKG_AID);
-    	openCardSim.installApplet(getAbsolutePath(capPath+"/"+CAP_WEAVER_CORE), WEAVER_CORE_AID,
+        openCardSim.installApplet(getAbsolutePath(capPath + "/" + CAP_WEAVER_CORE), WEAVER_CORE_AID,
                 WEAVER_CORE_PKG_AID);
     } 
 
-    private void installFira() throws JCOPException {
-        openCardSim.installApplet(getAbsolutePath(CAP_BER), null, BER_PKG_AID);
-        openCardSim.installApplet(getAbsolutePath(CAP_SUS), null, SUS_EXT_PKG_AID);
-        openCardSim.installApplet(getAbsolutePath(CAP_FIRA_SERVICE_APPLET), SERVICE_APPLET_AID,
-                SERVICE_APPLET_PKG_AID);
-        openCardSim.installApplet(getAbsolutePath(CAP_FIRA_SECURECHANNEL), null, SC_PKG_AID);
-        openCardSim.installApplet(getAbsolutePath(CAP_FIRA_APPLET), FIRA_APPLET_AID, FIRA_APPLET_PKG_AID);
-        openCardSim.installApplet(getAbsolutePath(CAP_SUS_APPLET), SUS_APPLET_AID, SUS_APPLET_PKG_AID);
+    private void installFira(String capPath) throws JCOPException {
+        openCardSim.installApplet(getAbsolutePath(capPath + "/" + CAP_BER), null, BER_PKG_AID);
+        openCardSim.installApplet(getAbsolutePath(capPath + "/" + CAP_SUS), null, SUS_EXT_PKG_AID);
+        openCardSim.installApplet(getAbsolutePath(capPath + "/" + CAP_FIRA_SERVICE_APPLET),
+                SERVICE_APPLET_AID, SERVICE_APPLET_PKG_AID);
+        openCardSim.installApplet(getAbsolutePath(capPath + "/" + CAP_FIRA_SECURECHANNEL), null,
+                SC_PKG_AID);
+        openCardSim.installApplet(getAbsolutePath(capPath + "/" + CAP_FIRA_APPLET), FIRA_APPLET_AID,
+                FIRA_APPLET_PKG_AID);
+        openCardSim.installApplet(getAbsolutePath(capPath + "/" + CAP_SUS_APPLET), SUS_APPLET_AID,
+                SUS_APPLET_PKG_AID);
+    }
+
+    private void installIC(String capPath) throws JCOPException {
+        openCardSim.installApplet(getAbsolutePath(capPath + "/" + CAP_IC_SEPRIVIDER), null,
+                IC_SEPROVIDER_PKG_AID);
+        openCardSim.installApplet(getAbsolutePath(capPath + "/" + CAP_IC_KEYMASTER),
+                IC_KEYMASTER_AID, IC_KEYMASTER_PKG_AID);
+        openCardSim.installApplet(getAbsolutePath(capPath + "/" + CAP_IC_READY), IC_READY_AID,
+                IC_READY_PKG_AID);
     }
 
     @Override
-	public void setupSimulator(String[] target, String pathToCapFiles) throws Exception {
-		try {
-			for (String name : target) {
-				switch (name) {
-				case "keymaster":
-					installKeymaster(pathToCapFiles);
-					break;
-				case "fira":
-					installFira();
-					break;
-				case "weaver":
-					installWeaver(pathToCapFiles);
-					break;
-				default:
-					// Ignore already handled in main function
-					break;
-				}
-			}
-		} catch (JCOPException e) {
-			openCardSim.close();
-			throw new JCOPException(e.getMessage());
-		}
-	}
+    public void setupSimulator(String[] target, String pathToCapFiles) throws Exception {
+        try {
+            for (String name : target) {
+                switch (name) {
+                case "keymaster":
+                    installKeymaster(pathToCapFiles);
+                    break;
+                case "fira":
+                    installFira(pathToCapFiles);
+                    break;
+                case "weaver":
+                    installWeaver(pathToCapFiles);
+                    break;
+                case "ic":
+                    installIC(pathToCapFiles);
+                    break;
+                default:
+                    // Ignore already handled in main function
+                    break;
+                }
+            }
+        } catch (JCOPException e) {
+            openCardSim.close();
+            throw new JCOPException(e.getMessage());
+        }
+    }
 
     private final byte[] intToByteArray(int value) {
         return new byte[] { (byte) (value >>> 8), (byte) value };

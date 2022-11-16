@@ -53,6 +53,12 @@ public class JCardSimulator implements Simulator {
     private void installFira() throws JCOPException {
     }
 
+    private void installWeaver() throws JCOPException {
+    }
+
+    private void installIC() throws JCOPException {
+    }
+
     @Override
     public void setupSimulator(String[] target, String pathToCapFiles) throws Exception {
         // TODO add Weaver
@@ -63,6 +69,12 @@ public class JCardSimulator implements Simulator {
                 break;
             case "fira":
                 installFira();
+                break;
+            case "weaver":
+                installWeaver();
+                break;
+            case "ic":
+                installIC();
                 break;
             default:
                 // Ignore already handled in main function
