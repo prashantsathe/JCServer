@@ -20,7 +20,7 @@ Program takes two or three arguments
 Example to install multiple packages
 <pre>
 jcop
-keymaster,weaver,fira
+keymaster,weaver,fira,ic
 </pre>
 Example to install single package
 <pre>
@@ -30,7 +30,7 @@ keymaster
 Example to install multiple packages with custom cap path
 <pre>
 jcop
-keymaster,weaver,fira
+keymaster,weaver,fira,ic
 &lt;path_to_cap_files&gt;
 </pre>
 
