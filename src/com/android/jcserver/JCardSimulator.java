@@ -127,13 +127,14 @@ public class JCardSimulator implements Simulator {
 
     /*
      * Jcard Simulator design is based on one applet and one channel at a time
-     * 
-     * In order to communicate multiple applets simultaneously on different channels
-     * We have added Logical channels implementation here. which has following variables 
+     *
+     * In order to communicate with multiple applets simultaneously on different channels,
+     * we have added Logical channels implementation here. For following implementation it requires
+     * following variables 
      *  - Vector[AID] (index 0 represent channel 0... so on)
      *  - CurrentChannelnumber
      * Generalized flow between SE hal and SE applet via JCserver is as follow
-     * 
+     *
      *    SE HAL                     JCServer                                     JcardSim
      *  ------------------------------------------------------------------------------------------
      *  Managechannel ->         check if any channel is 
